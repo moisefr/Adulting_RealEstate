@@ -27,7 +27,7 @@ def create_Area_Map():
 
     # Get location details for a city
     city_name = "Philadelphia, Pennsylvania"
-    location = geolocator.geocode(city_name)
+    location = geolocator.geocode(city_name,timeout=None)
 
     if location:
         latitude = location.latitude
@@ -146,13 +146,14 @@ def results():
         create_Marker(final_map)
         
         # set iframe width and height
-        final_map.get_root().width = "100%"
         final_map.get_root().height = "600px"
 
         # derive the iframe content to be rendered in the HTML body
         iframe = final_map.get_root()._repr_html_()
 
         return render_template('/results.html', properties = Zip_Code_Level_Data, final_map = iframe) 
+
+        #return render_template('/results.html', properties = Zip_Code_Level_Data) 
 
 @app.route("/calculations", methods=["GET","POST"])
 def calculations():
@@ -192,5 +193,5 @@ def calculations():
 if __name__ == "__main__":
    # port = int(os.environ.get("PORT", 5000))
     #app.run(host='0.0.0.0', port=port, debug= True)
-    app.run()
+    app.run(debug= True)
 
