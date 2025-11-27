@@ -35,7 +35,7 @@ def create_Area_Map():
         print(f"Coordinates for {city_name}: Latitude={latitude}, Longitude={longitude}")
     mapObj = folium.Map(location=[latitude, longitude],zoom_start=11)
 
-    #Adding Neighborhoods
+    #Adding Neighborhood
     #geo_file = 'https://github.com/opendataphilly/open-geo-data/blob/cd29c106382ef844f08e3212a82772cea0c9a55e/philadelphia-neighborhoods/philadelphia-neighborhoods.geojson'
     geo_file = os.path.join(app.static_folder, 'data', 'Zipcodes_Poly.geojson')
 
